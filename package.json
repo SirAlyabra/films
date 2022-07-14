@@ -1,0 +1,24 @@
+{
+  "name": "films",
+  "version": "1.0.0",
+  "description": "API rest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirAlyabra/films.git"
+  },
+  "keywords": [
+    "Films",
+    "API",
+    "REST"
+  ],
+  "author": "Sir Alyabra <alyabra.vargas@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SirAlyabra/films/issues"
+  },
+  "homepage": "https://github.com/SirAlyabra/films#readme"
+}
