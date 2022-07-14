@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/SirAlyabra/films/issues"
   },
-  "homepage": "https://github.com/SirAlyabra/films#readme"
+  "homepage": "https://github.com/SirAlyabra/films#readme",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
 }

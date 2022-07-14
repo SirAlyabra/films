@@ -1,7 +1,19 @@
+// const axios = require('axios').default;
+// import axios from'axios';
+
+const api = axios.create({
+    baseURL: 'https://api.themoviedb.org/3/',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+    params: {
+        'api_key': API_KEY,
+    }
+});
+
 async function getTreadingMoviesPreview() {
-    const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`);
-    const data = await res.json();
-    const movies = data.results
+    const {data} = await api('trending/movie/day');
+    const movies = data.results;
     console.log(data, movies);
     movies.forEach(movie => {
         const treadingPreviewMoviesContainer = document.querySelector('#trendingPreview .trendingPreview-movieList');
@@ -21,8 +33,9 @@ async function getTreadingMoviesPreview() {
 
 // asd
 async function getCategoriesPreview() {
-    const res = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`);
-    const data = await res.json();
+    const {data} = await api('genre/movie/list'); 
+    //axio no neceisario mandas api key aqui
+    //const data = await res.json(); en axios ne es necesario
     const categories = data.genres;
     // console.log(data, movies);
     categories.forEach(category => {
