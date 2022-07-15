@@ -16,7 +16,7 @@ async function getTreadingMoviesPreview() {
     const movies = data.results;
     console.log(data, movies);
     movies.forEach(movie => {
-        const treadingPreviewMoviesContainer = document.querySelector('#trendingPreview .trendingPreview-movieList');
+        const categoriesPreviewList = document.querySelector('#trendingPreview .trendingPreview-movieList');
         const movieContainer = document.createElement('div');
         movieContainer.classList.add('movie-container');
 
@@ -27,7 +27,7 @@ async function getTreadingMoviesPreview() {
          'https://image.tmdb.org/t/p/w300/'+ movie.poster_path);
 
          movieContainer.appendChild(movieImg);
-         treadingPreviewMoviesContainer.appendChild(movieContainer);
+         categoriesPreviewList.appendChild(movieContainer);
     });
 }
 
