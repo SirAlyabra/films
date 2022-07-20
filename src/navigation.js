@@ -60,6 +60,7 @@ function homePage() {
     console.log('Home')
     getTreadingMoviesPreview();
     getCategoriesPreview();
+    getLikedMovies();
 }
 function categoriesPage() {
     console.log('Categories')
@@ -74,6 +75,7 @@ function categoriesPage() {
     
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
+    likedMoviesSection.classList.add('inactive');
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
 
@@ -100,6 +102,7 @@ function movieDetailsPage() {
     
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
+    likedMoviesSection.classList.add('inactive');
     genericSection.classList.add('inactive');
     movieDetailSection.classList.remove('inactive');
 
@@ -121,6 +124,7 @@ function searchPage() {
     
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
+    likedMoviesSection.classList.add('inactive');
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
     //[#search, "busqueda"]
@@ -144,6 +148,7 @@ function trendsPage() {
     
     trendingPreviewSection.classList.add('inactive');
     categoriesPreviewSection.classList.add('inactive');
+    likedMoviesSection.classList.add('inactive');
     genericSection.classList.remove('inactive');
     movieDetailSection.classList.add('inactive');
     headerCategoryTitle.innerHTML = 'Tendencias'

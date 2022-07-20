@@ -1,6 +1,9 @@
 // const axios = require('axios').default;
 // import axios from'axios';
 
+
+//Data 
+
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
     headers: {
@@ -10,6 +13,33 @@ const api = axios.create({
         'api_key': API_KEY,
     }
 });
+
+
+function likedMoviesList() {
+    const item = JSON.parse(localStorage.getItem('liked_movies'));
+    let movies;
+
+    if(item) {
+        movies = item;
+    }
+    else {
+        movies = {}
+    }
+    return movies;
+}
+function likeMovie(movie) {
+
+    const likedMovies = likedMoviesList();
+
+    if (likedMovies[movie.id]) {
+        console.log('La pelicla esta en Ls, eliminar');
+         likedMovies[movie.id] = undefined;
+    } else {
+        console.log('La pelicla no esta en Ls, agregar');
+         likedMovies[movie.id] = movie;
+    }
+    localStorage.setItem('liked_movies', JSON.stringify(likedMovies));
+}
 
 // utils
 
@@ -23,7 +53,8 @@ const lazyLoader = new IntersectionObserver((entries) => {
     });
 }); 
 
-function createMovies(movies, 
+function createMovies(
+    movies, 
     container, 
     {   lazyLoad = false, 
         clean = true 
@@ -57,10 +88,12 @@ function createMovies(movies,
 
         const movieBtn = document.createElement('button');
         movieBtn.classList.add('movie-btn');
+        likedMoviesList()[movie.id] && movieBtn.classList.add('movie-btn--liked');
         movieBtn.addEventListener('click', () => {
             movieBtn.classList.toggle('movie-btn--liked')
             //agregar pelicula local storange
-        } )
+            likeMovie(movie);
+        });
 
         if(lazyLoad) {
             lazyLoader.observe(movieImg);
@@ -317,4 +350,15 @@ async function getRelatedMoviesId(movie_id) {
 
     createMovies(relatedMovies, relatedMoviesContainer); 
 
+}
+
+function getLikedMovies() {
+    const likedMovies = likedMoviesList();
+    const moviesArray = Object.values(likedMovies);
+    createMovies(
+        moviesArray, 
+        likedMoviesListArticle, 
+        { lazyLoad: true, 
+            clean: true 
+        });
 }
